@@ -1,0 +1,16 @@
+Recv: Bilinear Leveling Grid:
+Recv:       0      1      2
+Recv:  0 +0.054 +0.022 +0.028
+Recv:  1 +0.063 +0.018 +0.014
+Recv:  2 +0.087 +0.042 +0.028
+Recv:
+Recv: Bilinear Leveling Grid:
+Recv:       0      1      2
+Recv:  0 +0.058 +0.019 +0.027
+Recv:  1 +0.060 +0.014 +0.011
+Recv:  2 +0.084 +0.035 +0.023
+Recv:
+Recv:       0      1      2
+Recv:  0 +0.059 +0.022 +0.031
+Recv:  1 +0.063 +0.018 +0.014
+Recv:  2 +0.085 +0.037 +0.027
