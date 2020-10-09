@@ -8,9 +8,8 @@ import System.Exit
 import Flow
 
 import Text.Layout.Table
-import Text.Printf
 
-import Data.List (elemIndices, intercalate, intersperse)
+import Data.List (elemIndices)
 import Numeric
 
 import qualified Data.Text as T
@@ -72,6 +71,3 @@ formatCalculation c =
 
       addPlus :: String -> String
       addPlus x = if head x /= '-' then '+' : x else x
-
-      sepList :: Char -> [String] -> String
-      sepList sep = intercalate (sep:"")
