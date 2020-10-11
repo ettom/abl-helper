@@ -64,6 +64,9 @@ Found 3 measurement grids...
 └─────────────────┴─────────────────┴─────────────────┘
 ```
 
+For a printer without any outstanding mechanical issues, the standard deviation (`SD`)
+value should be close to the one reported by the `M48` command.
+
 ## Installation
 - Install [stack](https://docs.haskellstack.org/)
 - Run `stack install` in the root directory of the project
