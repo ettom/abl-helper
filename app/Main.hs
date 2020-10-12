@@ -19,7 +19,7 @@ main = getArgs >>= parse >>= putStrLn . doWork
       parse [] = putStrLn "Give a text file containing the measurements as an input!" >> exitWith (ExitFailure 1)
       parse (x:_) = readFile x
 
-      possibleGridSizes = [5,3]
+      possibleGridSizes = [2..10]
 
       tryGetGrids :: [Int] -> T.Text -> Maybe [Grid]
       tryGetGrids [] _ = Nothing
