@@ -34,7 +34,7 @@ mkCalculation xs = Calculation {
     mean' = avg xs
     min' = minimum xs
     max' = maximum xs
-    range' = abs $ abs min' - abs max'
+    range' = abs $ min' - max'
     stddev' = map ((^2) . (-) mean') xs |> avg |> sqrt
 
     avg :: (Fractional a) => [a] -> a
@@ -51,7 +51,7 @@ getCalculation = map (map mkCalculation)
 getGrids :: Int -> T.Text -> Maybe [Grid]
 getGrids gridSize x = let cleaned = T.lines x |> map cleanUp |> filter (/= T.empty)
                           chunks = chunksOf gridSize cleaned
-                          result = map toGrid chunks |> sequence
+                          result = traverse toGrid chunks
                       in if validateChunks chunks then result else Nothing
   where
     validateChunks :: [[T.Text]] -> Bool
@@ -65,7 +65,7 @@ getGrids gridSize x = let cleaned = T.lines x |> map cleanUp |> filter (/= T.emp
       where
         toRow :: T.Text -> Maybe [Double]
         toRow x
-          | length cells == gridSize = T.words x |> map (\z -> readMaybe (T.unpack z) :: Maybe Double) |> sequence
+          | length cells == gridSize = T.words x |> traverse (\z -> readMaybe (T.unpack z) :: Maybe Double)
           | otherwise                = Nothing
           where cells = T.words x
 

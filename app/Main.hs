@@ -34,10 +34,7 @@ main = getArgs >>= parse >>= putStrLn . doWork
           Nothing -> "Could not parse grids!"
           Just grids ->
             let rowgroups = unifyGrids grids |> getCalculation |> map (map formatCalculation) |> map (colsAllG center)
-                table = tableString (repeat def)
-                                   unicodeS
-                                   def
-                                   rowgroups
+                table = tableString (repeat def) unicodeS def rowgroups
 
             in "Found " ++ show (length grids) ++ " measurement grids...\n" ++ table
 
@@ -59,11 +56,11 @@ formatCalculation c =
       longPrecision = 6
 
       padLine :: Int -> String -> String
-      padLine k x
-        | length x < k = padLine k insertSpace
-        | otherwise    = x
-          where firstSpace = elemIndices ' ' x |> head
-                insertSpace = let (ys,zs) = splitAt firstSpace x in ys ++ " " ++ zs
+      padLine resultLength line
+        | length line < resultLength = padLine resultLength insertSpace
+        | otherwise    = line
+          where firstSpace = elemIndices ' ' line |> head
+                insertSpace = let (ys,zs) = splitAt firstSpace line in ys ++ " " ++ zs
 
 
       fixPrecision :: Int -> Double -> String
